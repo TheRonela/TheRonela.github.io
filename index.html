@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ronela Profile</title>
+
+  <style>
+    :root{
+      --bg0:#050814; --bg1:#07112a;
+      --text:#eaf2ff; --muted: rgba(234,242,255,.72);
+      --pink:#ff4fd8; --blue:#4aa3ff; --cyan:#22e6ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(255,79,216,.25), transparent 55%),
+        radial-gradient(900px 500px at 85% 15%, rgba(34,230,255,.22), transparent 60%),
+        linear-gradient(135deg, #02040d 0%, #06112a 40%, #02040d 100%);
+      min-height:100vh;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 56px;}
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap;
+    }
+    .brand{display:flex;align-items:center;gap:12px;min-width:240px;}
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background: linear-gradient(135deg, var(--pink), var(--blue), var(--cyan));
+      box-shadow: 0 0 0 6px rgba(255,79,216,.12), 0 18px 50px rgba(34,230,255,.18);
+      position:relative;overflow:hidden;
+      flex:0 0 auto;
+    }
+    .logo:before{
+      content:"";position:absolute;inset:-40%;
+      background: linear-gradient(120deg, rgba(255,255,255,.35), transparent 55%);
+      transform: rotate(20deg);opacity:.7;
+    }
+    .logo img{margin-left:10%;margin-top:10%;width:80%;height:80%;object-fit:cover;display:block;}
+    .brand h1{font-size:18px;margin:0;letter-spacing:.2px;}
+    .brand p{margin:2px 0 0;color:var(--muted);font-size:12.5px;}
+    .small-links a{
+      color: rgba(234,242,255,.72);text-decoration:none;border-bottom:1px dashed rgba(234,242,255,.25);
+      margin-right:10px;display:inline-block;
+    }
+    .small-links a:hover{color:rgba(234,242,255,.95);}
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      border-radius:18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      padding:22px;
+      position:relative;overflow:hidden;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .panel:after{
+      content:"";position:absolute;width:520px;height:520px;
+      right:-320px;top:-360px;
+      background: radial-gradient(circle at 30% 30%, rgba(34,230,255,.25), transparent 60%);
+      pointer-events:none;
+    }
+    .kicker{display:inline-flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;margin-bottom:12px;position:relative;z-index:1;}
+    .dot{width:10px;height:10px;border-radius:50%;background: linear-gradient(135deg, var(--pink), var(--blue), var(--cyan));box-shadow: 0 0 0 6px rgba(34,230,255,.12);}
+    h2{margin:0 0 10px;font-size:28px;line-height:1.1;letter-spacing:-.5px;position:relative;z-index:1;}
+    p{margin:0 0 14px;color:var(--muted);line-height:1.6;position:relative;z-index:1;}
+    .badgeRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;position:relative;z-index:1;}
+    .tag{
+      display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;
+      font-size:12px;color: rgba(234,242,255,.86);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);gap:8px;
+    }
+    .tag i{width:8px;height:8px;border-radius:50%;background: linear-gradient(135deg, var(--pink), var(--blue), var(--cyan));display:inline-block;box-shadow: 0 0 0 5px rgba(34,230,255,.12);}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;position:relative;z-index:1;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:11px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);color:var(--text);text-decoration:none;font-weight:600;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px);border-color: rgba(34,230,255,.35);background: rgba(34,230,255,.12);}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(255,79,216,.95), rgba(74,163,255,.85), rgba(34,230,255,.85));
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 18px 40px rgba(34,230,255,.22);
+    }
+    .grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:14px;margin-top:12px;}
+    @media (max-width: 950px){.grid{grid-template-columns: repeat(2, 1fr);}}
+    @media (max-width: 620px){.grid{grid-template-columns: 1fr;}}
+    .card{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius:16px;padding:16px;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      overflow:hidden;
+    }
+    .card:hover{border-color: rgba(255,79,216,.25);background: rgba(255,79,216,.08);transform: translateY(-2px);}
+    .card a{display:block;text-decoration:none;color:inherit;}
+    .card h3{margin:10px 0 6px;font-size:15px;}
+    .card p{margin:0;color:var(--muted);line-height:1.5;font-size:13px;}
+    .sectionTitle{margin:18px 0 12px;color: rgba(234,242,255,.92);font-size:15px;letter-spacing:.2px;display:flex;align-items:center;gap:10px;}
+    .sectionTitle:before{content:"";width:10px;height:10px;border-radius:50%;background: linear-gradient(135deg, var(--pink), var(--blue), var(--cyan));box-shadow: 0 0 0 6px rgba(34,230,255,.12);}
+    footer{margin-top:26px;color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+
+    .appTop{
+      display:flex;align-items:center;gap:12px;
+    }
+    .appIcon{
+      width:36px;height:36px;border-radius:14px;
+      background: linear-gradient(135deg, var(--pink), var(--blue), var(--cyan));
+      box-shadow: 0 0 0 5px rgba(255,79,216,.12), 0 16px 40px rgba(34,230,255,.16);
+      position:relative;overflow:hidden; flex:0 0 auto;
+    }
+    .appIcon:before{
+      content:"";position:absolute;inset:-40%;
+      background: linear-gradient(120deg, rgba(255,255,255,.35), transparent 55%);
+      transform: rotate(20deg);opacity:.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <img src="favicon.png" alt="" />
+        </div>
+        <div>
+          <h1>Ronela</h1>
+          <p>Profile • Simple useful tools, built with AI + humans</p>
+        </div>
+      </div>
+
+      <div class="small-links" aria-label="Quick links">
+        <a href="#about">About</a>
+        <a href="#apps">Apps</a>
+      </div>
+    </header>
+
+    <section id="about" class="panel">
+      <div class="kicker"><span class="dot" aria-hidden="true"></span>About Ronela</div>
+      <h2>Making everyday work feel easier</h2>
+      <p>
+        Ronela builds simple, useful tools that help people move faster, stay organized, and turn ideas into outcomes.
+        We combine the speed of AI with human craftsmanship to keep things practical and ready to use.
+      </p>
+
+      <div class="badgeRow">
+        <span class="tag"><i aria-hidden="true"></i>Simple UX</span>
+        <span class="tag"><i aria-hidden="true"></i>AI + Human Build</span>
+        <span class="tag"><i aria-hidden="true"></i>Useful by Default</span>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="#apps">View Apps</a>
+      </div>
+    </section>
+
+    <div class="sectionTitle" id="apps">Apps</div>
+    <div class="grid">
+      <div class="card">
+        <a href="https://ailite.pages.dev" target="_blank" rel="noopener noreferrer">
+          <div class="appTop">
+             <div class="logo" aria-hidden="true">
+              <img src="favicon.png" alt="" />
+             </div>
+           
+            <h3 style="margin:0;">AI Lite</h3>
+          </div>
+          <p style="margin-top:8px;">Tool app collection—clean, quick access to helpful utilities.</p>
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>More apps coming</h3>
+        <p>Ronela will keep adding simple useful tools.</p>
+      </div>
+
+      <div class="card">
+        <h3>Your ideas welcome</h3>
+        <p>Share what you want next, and we’ll shape it into a tool.</p>
+      </div>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> Ronela</div>
+      <div class="small-links"><a href="#about">Back to top</a></div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
